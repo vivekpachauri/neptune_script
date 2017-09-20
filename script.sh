@@ -17,6 +17,7 @@ if [ -n "$rallyid" ]; then
 else
     echo "unable to find a valid rally id";
     echo "exiting the script now";
+    echo "===================================================";
     exit;
 fi
 echo "---------------------------------------------------"
