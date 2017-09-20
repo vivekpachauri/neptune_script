@@ -12,7 +12,13 @@ psql -h postgres-rds-icanhazevolutions.cpirb098hibl.us-east-1.rds.amazonaws.com 
 echo
 echo 'extracting the id from output'
 rallyid=$(grep -E -o [a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+-[a-z0-9]+ output.txt)
-echo "found rally id $rallyid"
+if [ -n "$rallyid" ]; then
+    echo "found a valid rally id $rallyid";
+else
+    echo "unable to find a valid rally id";
+    echo "exiting the script now";
+    exit;
+fi
 echo "---------------------------------------------------"
 echo
 echo "updating role for user $rallyid"
